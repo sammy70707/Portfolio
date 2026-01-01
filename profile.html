@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | SAMMY</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* PROFILE CARD */
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            border-radius: 18px;
+            padding: 40px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .profile-card img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00e5ff;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-card h3 {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.85;
+            margin-bottom: 22px;
+        }
+
+        .profile-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* INFO GRID */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.07);
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+        }
+
+        /* BUTTONS */
+        .buttons a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 26px;
+            text-decoration: none;
+            color: #ffffff;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, #00e5ff, #0097a7);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 6px 18px rgba(1, 11, 12, 0.35);
+        }
+
+        .buttons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(246, 250, 1, 0.55);
+        }
+
+        @media (max-width: 520px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .info-box a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile-container">
+        <div class="profile-card">
+            <img src="profille.jpg" alt="Profile Picture">
+
+            <h1>Nishant</h1>
+            <h3>BCA (AI & Data Science)</h3>
+
+            <p>
+                A focused learner with a deep interest in Artificial Intelligence &
+                Data Science, and modern web technologies. I believe in discipline,
+                clarity, and building things that last.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-box"><a href="bca(ai&ds).html">🎓 BCA (AI & DS)</a></div>
+                
+                <div class="info-box">💻 Web & AI Enthusiast</div>
+                <div class="info-box"><a href="sammy profile.html">🎮 Gamer & Creator</a></div>
+            </div>
+
+            <div class="buttons">
+                <a href="index.html">Home</a>
+                <a href="https://www.instagram.com/ni_shant07_/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
