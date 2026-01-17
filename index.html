@@ -18,7 +18,7 @@
 
         body {
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(to bottom, #2D1E2F, #4E2A4F);
             color: #f0e6eb;
             line-height: 1.6;
         }
@@ -28,7 +28,6 @@
             text-decoration: none;
         }
 
-        /* Navbar */
         nav {
             background: rgba(15, 32, 39, 0.98);
             backdrop-filter: blur(10px);
@@ -70,7 +69,6 @@
             color: #00e5ff;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -111,7 +109,6 @@
             box-shadow: 0 10px 30px rgba(0, 229, 255, 0.5);
         }
 
-        /* About Section */
         .about {
             padding: 5rem 2rem;
             background: rgba(0, 0, 0, 0.2);
@@ -194,7 +191,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Projects Section */
         .projects {
             padding: 5rem 2rem;
         }
@@ -264,7 +260,6 @@
             background: rgba(0, 229, 255, 0.4);
         }
 
-        /* Gaming Section */
         .gaming {
             display: none;
             padding: 5rem 2rem;
@@ -280,7 +275,6 @@
             overflow-x: auto;
         }
 
-        /* Hobbies Modal */
         .hobby-item {
             cursor: pointer;
         }
@@ -416,7 +410,6 @@
             background-color: rgba(0, 229, 255, 0.05);
         }
 
-        /* Contact Section */
         .contact {
             padding: 5rem 2rem;
             text-align: center;
@@ -440,7 +433,6 @@
             justify-content: center;
         }
 
-        /* Social Icon Buttons */
         .social-buttons {
             display: flex;
             gap: 1rem;
@@ -469,7 +461,6 @@
             box-shadow: 0 8px 25px rgba(0, 229, 255, 0.5);
         }
 
-        /* Tooltip */
         .social-btn::after {
             content: attr(data-tooltip);
             position: absolute;
@@ -538,7 +529,7 @@
             font-size: 0.95rem;
         }
 
-        /* Footer */
+        /* Footerrr */
         footer {
             background: rgba(0, 0, 0, 0.4);
             padding: 2rem;
@@ -563,12 +554,110 @@
             color: #00e5ff;
         }
 
-        /* Animation Classes */
-        .animate-on-scroll {
-            opacity: 1;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Responsive */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-content h1 {
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .hero-content .title {
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .hero-content p {
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .cta-button {
+            animation: fadeInScale 1.5s ease-out forwards;
+        }
+
+        /* Animation section */
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-on-scroll.animate-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-on-scroll.animate-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .animate-on-scroll.animate-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Scroll animation*/
+        .animate-scroll-left {
+            opacity: 0;
+        }
+
+        .animate-scroll-right {
+            opacity: 0;
+        }
+
+        .animate-scroll-left.animate-on-scroll {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-scroll-right.animate-on-scroll {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        /* Scroll animation*/
+        .animate-scroll-up {
+            opacity: 0;
+        }
+
+        .animate-scroll-up.animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2rem;
@@ -628,7 +717,7 @@
         <div class="container">
             <h2 class="section-title animate-on-scroll animate-up">About Me</h2>
             <div class="about-content">
-                <div class="about-image animate-on-scroll animate-left">
+                <div class="about-image animate-scroll-left">
                     <img src="profile.jpg" alt="Nishant">
                     <div class="social-buttons">
                         <a href="https://github.com/sammy70707" target="_blank" class="social-btn" data-tooltip="GitHub" title="GitHub">
@@ -648,7 +737,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="about-text animate-on-scroll animate-right">
+                <div class="about-text animate-scroll-right">
                     <h2>BCA (AI & Data Science)</h2>
                     <p>
                         I'm a student at Graphic Era Hill University, Dehradun, pursuing BCA with specialization in Artificial Intelligence and Data Science. I have a strong passion for building innovative solutions and exploring emerging technologies.
@@ -683,7 +772,7 @@
         <div class="container">
             <h2 class="section-title animate-on-scroll animate-up">Projects</h2>
             <div class="projects-grid">
-                <div class="project-card animate-on-scroll">
+                <div class="project-card animate-scroll-up">
                     <div class="project-image">🌐</div>
                     <div class="project-content">
                         <h3>Portfolio Website</h3>
@@ -695,7 +784,7 @@
                     </div>
                 </div>
 
-                <div class="project-card animate-on-scroll">
+                <div class="project-card animate-scroll-up">
                     <div class="project-image">🤖</div>
                     <div class="project-content">
                         <h3>Saas Application Project</h3>
@@ -711,7 +800,7 @@
     
     <section id="contact" class="contact">
         <div class="container">
-            <div class="contact-content animate-on-scroll animate-up">
+            <div class="contact-content animate-scroll-up">
                 <h2 class="section-title">Let's Connect</h2>
                 <p>Feel free to reach out! I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
                 <div class="contact-buttons">
@@ -743,7 +832,7 @@
                     <p>Elden Ring</p>
                 </div>
                 <div class="game-card">
-                    <p>Forza Horizon 5</p>
+                    <p>Forza Horizon</p>
                 </div>
                 <div class="game-card">
                     <p>Marvel's Spider-Man: Miles Morales</p>
@@ -778,9 +867,28 @@
             document.body.style.overflow = 'auto';
         }
 
-        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                } else {
+                    entry.target.classList.remove('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToObserve = document.querySelectorAll('.project-card, .section-title, .animate-scroll-left, .animate-scroll-right, .animate-scroll-up, .contact-content');
+            elementsToObserve.forEach(el => {
+                observer.observe(el);
+            });
+        });
     </script>
 
 </body>
 </html>
-
