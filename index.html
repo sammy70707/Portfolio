@@ -1244,8 +1244,6 @@
                 </div>
             </div>
         </div>
-
-        
     </section>
 
     <!-- ===== ABOUT ===== -->
@@ -1552,7 +1550,7 @@
             const roles = [
                 'Web Developer',
                 'AI Enthusiast',
-                'Full Stack Developer',
+                'Full Stack Dev',
                 'Problem Solver',
                 'Tech Explorer'
             ];
@@ -1593,6 +1591,19 @@
             const ctx = canvas ? canvas.getContext('2d') : null;
             let particles = [];
 
+            // Mouse tracking
+            const mouse = { x: -9999, y: -9999, radius: 120 };
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+
+            window.addEventListener('mouseout', () => {
+                mouse.x = -9999;
+                mouse.y = -9999;
+            });
+
             function resizeCanvas() {
                 if (!canvas) return;
                 canvas.width = window.innerWidth;
@@ -1607,17 +1618,39 @@
                 reset() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
+                    this.baseX = this.x;
+                    this.baseY = this.y;
                     this.size = Math.random() * 2 + 0.5;
                     this.speedX = (Math.random() - 0.5) * 0.4;
                     this.speedY = (Math.random() - 0.5) * 0.4;
                     this.opacity = Math.random() * 0.4 + 0.1;
                     this.hue = Math.random() * 60 + 320;
+                    this.density = (Math.random() * 30) + 1;
                 }
 
                 update() {
+                    // Mouse repulsion
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < mouse.radius) {
+                        const force = (mouse.radius - dist) / mouse.radius;
+                        const angle = Math.atan2(dy, dx);
+                        this.x -= Math.cos(angle) * force * 3;
+                        this.y -= Math.sin(angle) * force * 3;
+                        // Boost opacity near cursor
+                        this.opacity = Math.min(0.8, this.opacity + force * 0.3);
+                    } else {
+                        // Fade back to base opacity
+                        this.opacity += (Math.random() * 0.4 + 0.1 - this.opacity) * 0.02;
+                    }
+
+                    // Normal drift
                     this.x += this.speedX;
                     this.y += this.speedY;
 
+                    // Wrap around
                     if (this.x < 0) this.x = canvas.width;
                     if (this.x > canvas.width) this.x = 0;
                     if (this.y < 0) this.y = canvas.height;
@@ -1643,6 +1676,7 @@
             }
 
             function drawLines() {
+                // Lines between particles
                 for (let i = 0; i < particles.length; i++) {
                     for (let j = i + 1; j < particles.length; j++) {
                         const dx = particles[i].x - particles[j].x;
@@ -1658,12 +1692,38 @@
                             ctx.stroke();
                         }
                     }
+
+                    // Lines from particles to mouse cursor
+                    const dx = particles[i].x - mouse.x;
+                    const dy = particles[i].y - mouse.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouse.radius * 1.5) {
+                        const alpha = (1 - dist / (mouse.radius * 1.5)) * 0.25;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = `rgba(255, 107, 53, ${alpha})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.stroke();
+                    }
                 }
+            }
+
+            function drawMouseGlow() {
+                if (mouse.x < 0 || mouse.y < 0) return;
+                const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 60);
+                gradient.addColorStop(0, 'rgba(247, 37, 133, 0.06)');
+                gradient.addColorStop(1, 'rgba(247, 37, 133, 0)');
+                ctx.beginPath();
+                ctx.arc(mouse.x, mouse.y, 60, 0, Math.PI * 2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
             }
 
             function animateParticles() {
                 if (!ctx) return;
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawMouseGlow();
                 particles.forEach(p => {
                     p.update();
                     p.draw();
