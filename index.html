@@ -3,907 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom, #2D1E2F, #4E2A4F);
-            color: #f0e6eb;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        nav {
-            background: rgba(15, 32, 39, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #00e5ff;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        nav a:hover {
-            color: #00e5ff;
-        }
-
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero-content .title {
-            font-size: 1.5rem;
-            color: #00e5ff;
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: linear-gradient(135deg, #00e5ff, #0097a7);
-            color: #fff;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.3);
-            cursor: pointer;
-            border: none;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.5);
-        }
-
-        .about {
-            padding: 5rem 2rem;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: #00e5ff;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            text-align: center;
-        }
-
-        .about-image img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #00e5ff;
-            box-shadow: 0 10px 40px rgba(0, 229, 255, 0.2);
-            transition: transform 0.40s ease;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-image img:hover {
-            transform: scale(1.05);
-        }
-
-        .about-image .social-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .about-text h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-            font-size: 1.05rem;
-        }
-
-        .about-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .info-item {
-            background: rgba(0, 229, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 3px solid #00e5ff;
-        }
-
-        .info-item strong {
-            color: #00e5ff;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .projects {
-            padding: 5rem 2rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            transition: transform 0.40s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.3);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #0f2027, #203a43);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: rgba(0, 229, 255, 0.3);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #00e5ff;
-        }
-
-        .project-content p {
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            opacity: 0.85;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            padding: 0.5rem 1rem;
-            background: rgba(0, 229, 255, 0.2);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: background 0.3s ease;
-        }
-
-        .project-link:hover {
-            background: rgba(0, 229, 255, 0.4);
-        }
-
-        .gaming {
-            display: none;
-            padding: 5rem 2rem;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .gaming-content {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            overflow-x: auto;
-        }
-
-        .hobby-item {
-            cursor: pointer;
-        }
-
-        .hobby-item:hover {
-            opacity: 0.8;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            animation: fadeIn 0.40s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            background: rgba(15, 32, 39, 0.98);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-            animation: slideUp 0.40s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-header h2 {
-            font-size: 1.8rem;
-            color: #00e5ff;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: #00e5ff;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: transform 0.40s ease;
-        }
-
-        .close-btn:hover {
-            transform: rotate(90deg);
-        }
-
-        .games-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .game-card {
-            background: rgba(0, 229, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            transition: all 0.40s ease;
-            cursor: pointer;
-        }
-
-        .game-card:hover {
-            background: rgba(0, 229, 255, 0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2);
-        }
-
-        .game-card p {
-            color: #00e5ff;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            color: #e4e4e4;
-        }
-
-        th {
-            background-color: rgba(0, 229, 255, 0.1);
-            color: #00e5ff;
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid rgba(0, 229, 255, 0.3);
-        }
-
-        td {
-            padding: 1rem;
-            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
-        }
-
-        tr:hover {
-            background-color: rgba(0, 229, 255, 0.05);
-        }
-
-        .contact {
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .contact-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00e5ff, #0097a7);
-            color: #fff;
-            font-size: 1.5rem;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.15);
-            position: relative;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(0, 229, 255, 0.9);
-        }
-
-        .social-btn::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 229, 255, 0.2);
-            color: #00e5ff;
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.15s ease;
-            border: 1px solid rgba(0, 229, 255, 0.4);
-        }
-
-        .social-btn:hover::after {
-            opacity: 1;
-        }
-
-        .info-section {
-            background: rgba(0, 229, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-            border: 1px solid rgba(0, 229, 255, 0.2);
-        }
-
-        .info-section h3 {
-            color: #00e5ff;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .info-section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .info-badge {
-            background: rgba(0, 229, 255, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            transition: all 0.40s ease;
-        }
-
-        .info-badge:hover {
-            background: rgba(0, 229, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .info-badge-label {
-            font-size: 0.8rem;
-            color: #999;
-            margin-bottom: 0.5rem;
-        }
-
-        .info-badge-value {
-            color: #00e5ff;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        /* Footerrr */
-        footer {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(0, 229, 255, 0.1);
-            margin-top: 2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            transition: color 0.40s ease;
-        }
-
-        .footer-links a:hover {
-            color: #00e5ff;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .hero-content h1 {
-            animation: fadeInUp 1.5s ease-out forwards;
-        }
-
-        .hero-content .title {
-            animation: fadeInUp 1.5s ease-out forwards;
-        }
-
-        .hero-content p {
-            animation: fadeInUp 1.5s ease-out forwards;
-        }
-
-        .cta-button {
-            animation: fadeInScale 1.5s ease-out forwards;
-        }
-
-        /* Animation section */
-        .animate-on-scroll {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .animate-on-scroll.animate-left {
-            animation: fadeInLeft 0.8s ease-out forwards;
-        }
-
-        .animate-on-scroll.animate-right {
-            animation: fadeInRight 0.8s ease-out forwards;
-        }
-
-        .animate-on-scroll.animate-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        /* Scroll animation*/
-        .animate-scroll-left {
-            opacity: 0;
-        }
-
-        .animate-scroll-right {
-            opacity: 0;
-        }
-
-        .animate-scroll-left.animate-on-scroll {
-            animation: fadeInLeft 0.8s ease-out forwards;
-        }
-
-        .animate-scroll-right.animate-on-scroll {
-            animation: fadeInRight 0.8s ease-out forwards;
-        }
-
-        /* Scroll animation*/
-        .animate-scroll-up {
-            opacity: 0;
-        }
-
-        .animate-scroll-up.animate-on-scroll {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .about-image img {
-                width: 200px;
-                height: 200px;
-            }
-
-            .about-info {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <meta name="description" content="Nishant — Web Developer & AI Enthusiast. BCA student specializing in AI & Data Science at Graphic Era Hill University.">
+    <meta name="keywords" content="Nishant, Web Developer, AI Enthusiast, Portfolio, Full Stack Developer">
+    <meta name="author" content="Nishant">
+    <title>Nishant | Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <nav>
-        <div class="container">
-            <div class="logo">Nishant</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="javascript:void(0);" onclick="openHobbyModal()">Gaming</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://discord.gg/eUUgYKXm5g" target="_blank">Discord</a></li>
-            </ul>
-        </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">
+            <span class="logo-bracket">&lt;</span>Nishant<span class="logo-bracket">/&gt;</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#gaming" class="nav-link">Gaming</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="https://discord.gg/eUUgYKXm5g" target="_blank" class="nav-link nav-link--discord">Discord</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
     </nav>
 
-    <section class="hero">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>Heyy, I'm Nishant</h1>
-            <p class="title">I'm a Web Developer & AI Enthusiast</p>
-            <p style="font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9;">
-                A focused learner with deep interest in Artificial Intelligence, Data Science, and modern web technologies.
-            </p>
-            <a href="#contact" class="cta-button">Get In Touch</a>
+            <p class="hero-greeting">Hey there, I'm</p>
+            <h1 class="hero-name">
+                <span class="gradient-text">Nishant</span>
+            </h1>
+            <div class="hero-role">
+                <span class="role-prefix">I'm a&nbsp;</span>
+                <span class="typewriter" id="typewriter"></span>
+                <span class="typewriter-cursor">|</span>
+            </div>
+            <p class="hero-desc">A focused learner with deep interest in Artificial Intelligence, Data Science, and modern web technologies.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Get In Touch</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="avatar-wrapper">
+                <div class="avatar-ring"></div>
+                <div class="avatar-ring avatar-ring--2"></div>
+                <div class="avatar-glow"></div>
+                <div class="avatar-placeholder">
+                    <img src="profile.jpg" alt="Nishant" class="avatar-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator" id="scrollIndicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <!-- ===== ABOUT ===== -->
+    <section class="section about" id="about">
         <div class="container">
-            <h2 class="section-title animate-on-scroll animate-up">About Me</h2>
+            <h2 class="section-title reveal">
+                <span class="section-number">01.</span> About Me
+            </h2>
+
             <div class="about-content">
-                <div class="about-image animate-scroll-left">
-                    <img src="profile.jpg" alt="Nishant">
-                    <div class="social-buttons">
-                        <a href="https://github.com/sammy70707" target="_blank" class="social-btn" data-tooltip="GitHub" title="GitHub">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                        <a href="https://steamcommunity.com/profiles/76561199747123480/" target="_blank" class="social-btn" data-tooltip="Steam" title="Steam">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M11.979 0C5.6 0 .51 5.052.51 11.414c0 3.888 2.065 7.272 5.148 9.131.3.132.631.047.793-.233l1.366-1.955c.159-.23.127-.537-.104-.708-2.182-1.547-3.633-4.01-3.633-6.8 0-4.635 3.767-8.402 8.412-8.402 4.646 0 8.413 3.767 8.413 8.402 0 2.79-1.451 5.253-3.633 6.8-.231.171-.263.478-.104.708l1.366 1.955c.162.28.493.365.793.233 3.083-1.859 5.148-5.243 5.148-9.131C23.49 5.052 18.399 0 11.979 0zm-2.206 14.648c.805 0 1.458-.652 1.458-1.457 0-.805-.653-1.458-1.458-1.458-.804 0-1.457.653-1.457 1.458 0 .805.653 1.457 1.457 1.457zm6.826 0c.805 0 1.458-.652 1.458-1.457 0-.805-.653-1.458-1.458-1.458-.804 0-1.457.653-1.457 1.458 0 .805.653 1.457 1.457 1.457z"/>
-                            </svg>
-                        </a>
-                        <a href="https://discord.gg/eUUgYKXm5g" target="_blank" class="social-btn" data-tooltip="Discord" title="Discord">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.864-.608 1.25a18.27 18.27 0 0 0-5.487 0c-.163-.386-.398-.875-.609-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.294.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.294a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.076.076 0 0 0-.041.107c.359.698.77 1.364 1.225 1.994a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.057c.5-4.718-.838-8.812-3.54-12.46a.061.061 0 0 0-.032-.027zM8.02 15.33c-1.183 0-2.157-.965-2.157-2.156 0-1.193.964-2.157 2.157-2.157 1.193 0 2.157.964 2.157 2.157 0 1.19-.965 2.156-2.157 2.156zm7.975 0c-1.183 0-2.157-.965-2.157-2.156 0-1.193.964-2.157 2.157-2.157 1.193 0 2.157.964 2.157 2.157 0 1.19-.964 2.156-2.157 2.156z"/>
-                            </svg>
-                        </a>
+                <div class="about-text reveal">
+                    <div class="about-badge">
+                        <span class="badge-icon">🎓</span>
+                        <span>BCA — AI & Data Science</span>
                     </div>
+                    <p>I'm a student at <strong>Graphic Era Hill University, Dehradun</strong>, pursuing BCA with specialization in Artificial Intelligence and Data Science.</p>
+                    <p>I have a strong passion for building innovative solutions and exploring emerging technologies. I believe in discipline, clarity, and building things that last.</p>
+                    <p>Whether it's developing web applications or diving into AI research, I approach every challenge with curiosity and determination.</p>
                 </div>
-                <div class="about-text animate-scroll-right">
-                    <h2>BCA (AI & Data Science)</h2>
-                    <p>
-                        I'm a student at Graphic Era Hill University, Dehradun, pursuing BCA with specialization in Artificial Intelligence and Data Science. I have a strong passion for building innovative solutions and exploring emerging technologies.
-                    </p>
-                    <p>
-                        I believe in discipline, clarity, and building things that last. Whether it's developing web applications, I approach every challenge with curiosity and determination.
-                    </p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <strong>🎓 Qualification</strong>
-                            <span>BCA (AI & DS)</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>🏫 University</strong>
-                            <span>Graphic Era Hill</span>
-                        </div>
-                        <div class="info-item">
-                            <strong>💻 Interest</strong>
-                            <span>Web & AI</span>
-                        </div>
-                        <div class="info-item hobby-item" onclick="openHobbyModal()">
-                            <strong style="cursor: pointer;">🎮 Hobbies</strong>
-                            <span style="cursor: pointer; color: #00e5ff; display: block; margin-top: 0.5rem; font-size: 0.9rem;">Click to view games...</span>
-                        </div>
+
+                <div class="about-skills reveal">
+                    <h3 class="skills-heading">Tech Stack</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag" style="--delay: 0">HTML</span>
+                        <span class="skill-tag" style="--delay: 1">CSS</span>
+                        <span class="skill-tag" style="--delay: 2">JavaScript</span>
+                        <span class="skill-tag" style="--delay: 3">React</span>
+                        <span class="skill-tag" style="--delay: 4">Node.js</span>
+                        <span class="skill-tag" style="--delay: 5">Python</span>
+                        <span class="skill-tag" style="--delay: 6">MongoDB</span>
+                        <span class="skill-tag" style="--delay: 7">Git</span>
+                        <span class="skill-tag" style="--delay: 8">Java</span>
+                        <span class="skill-tag" style="--delay: 9">AI / ML</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects">
+    <!-- ===== PROJECTS ===== -->
+    <section class="section projects" id="projects">
         <div class="container">
-            <h2 class="section-title animate-on-scroll animate-up">Projects</h2>
+            <h2 class="section-title reveal">
+                <span class="section-number">02.</span> Projects
+            </h2>
+
             <div class="projects-grid">
-                <div class="project-card animate-scroll-up">
-                    <div class="project-image">🌐</div>
-                    <div class="project-content">
-                        <h3>Portfolio Website</h3>
-                        <p>A modern, responsive portfolio website showcasing projects and skills with smooth animations and interactive components.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">See Live</a>
-                            <a href="https://github.com/sammy70707?tab=repositories" target="_blank" class="project-link">Source Code</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="project-card animate-scroll-up">
-                    <div class="project-image" style="background: url(212.png) no-repeat center center fixed;
-                         background-size: cover;"></div>
-                    <div class="project-content">
-                        <h3>Space News</h3>
-                        <p>A web application that provides the latest news and updates from the world of space exploration and astronomy.</p>
-                        <div class="project-links">
-                            <div class="project-links">
-                            <a href="#" class="project-link">See Live</a>
-                            <a href="https://github.com/sammy70707/Space-News" target="_blank" class="project-link">Source Code</a>
+                <!-- Project 1 -->
+                <article class="project-card reveal" id="project-ecommerce">
+                    <div class="project-card-inner">
+                        <div class="project-icon">🛒</div>
+                        <div class="project-number">01</div>
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-desc">A full-stack MERN e-commerce platform with user auth, product management, shopping cart, checkout system, and admin panel.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>Express</span>
                         </div>
+                        <div class="project-links">
+                            <a href="https://github.com/sammy70707?tab=repositories" target="_blank" class="project-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0-.09-3.77S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                Code
+                            </a>
                         </div>
                     </div>
-                </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card reveal" id="project-spacenews">
+                    <div class="project-card-inner">
+                        <div class="project-icon">🚀</div>
+                        <div class="project-number">02</div>
+                        <h3 class="project-title">Space News</h3>
+                        <p class="project-desc">A web application providing the latest news and updates from the world of space exploration and astronomy.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://akat-suki.in" target="_blank" class="project-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                Live
+                            </a>
+                            <a href="https://github.com/sammy70707/Space-News" target="_blank" class="project-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0-.09-3.77S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card reveal" id="project-portfolio">
+                    <div class="project-card-inner">
+                        <div class="project-icon">💼</div>
+                        <div class="project-number">03</div>
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <p class="project-desc">A modern, responsive portfolio website showcasing projects and skills with smooth animations and interactive components.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://akat-suki.in" target="_blank" class="project-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                Live
+                            </a>
+                            <a href="https://github.com/sammy70707?tab=repositories" target="_blank" class="project-link">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0-.09-3.77S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
 
-    
-    <section id="contact" class="contact">
+    <!-- ===== GAMING ===== -->
+    <section class="section gaming" id="gaming">
         <div class="container">
-            <div class="contact-content animate-scroll-up">
-                <h2 class="section-title">Let's Connect</h2>
-                <p>Feel free to reach out! I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-                <div class="contact-buttons">
-                    <a href="mailto:sammyofficial770@gmail.com" class="cta-button">Send Email</a>
-                    <a href="https://www.instagram.com/ni_shant07_/" target="_blank" class="cta-button">Instagram</a>
-                    <a href="https://discord.gg/eUUgYKXm5g" target="_blank" class="cta-button">Discord</a>
+            <h2 class="section-title reveal">
+                <span class="section-number">03.</span> 🎮 Gaming Collection
+            </h2>
+            <p class="gaming-subtitle reveal">When I'm not coding, you'll find me in these worlds</p>
+
+            <div class="gaming-grid">
+                <div class="game-card reveal" style="--accent: #c5a22a">
+                    <div class="game-card-bg" style="background: linear-gradient(135deg, #1a1a0a, #2a2200)"></div>
+                    <span class="game-emoji">🏙️</span>
+                    <h3>GTA V</h3>
+                </div>
+                <div class="game-card reveal" style="--accent: #c0392b">
+                    <div class="game-card-bg" style="background: linear-gradient(135deg, #1a0a0a, #2a0000)"></div>
+                    <span class="game-emoji">🤠</span>
+                    <h3>Red Dead Redemption 2</h3>
+                </div>
+                <div class="game-card reveal" style="--accent: #e74c6f">
+                    <div class="game-card-bg" style="background: linear-gradient(135deg, #1a0a12, #2a001a)"></div>
+                    <span class="game-emoji">🔫</span>
+                    <h3>Valorant</h3>
+                </div>
+                <div class="game-card reveal" style="--accent: #d4a825">
+                    <div class="game-card-bg" style="background: linear-gradient(135deg, #1a1a0a, #2a2200)"></div>
+                    <span class="game-emoji">⚔️</span>
+                    <h3>Elden Ring</h3>
+                </div>
+                <div class="game-card reveal" style="--accent: #2980b9">
+                    <div class="game-card-bg" style="background: linear-gradient(135deg, #0a0f1a, #001a2a)"></div>
+                    <span class="game-emoji">🏎️</span>
+                    <h3>Forza Horizon</h3>
+                </div>
+                <div class="game-card reveal" style="--accent: #e74c3c">
+                    <div class="game-card-bg" style="background: linear-gradient(135deg, #1a0a0f, #2a0010)"></div>
+                    <span class="game-emoji">🕷️</span>
+                    <h3>Spider-Man: Miles Morales</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="hobbyModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>🎮 My Gaming Collection</h2>
-                <button class="close-btn" onclick="closeHobbyModal()">&times;</button>
-            </div>
-            <div class="games-list">
-                <div class="game-card">
-                    <p>GTA V</p>
-                </div>
-                <div class="game-card">
-                    <p>Red Dead Redemption 2</p>
-                </div>
-                <div class="game-card">
-                    <p>Valorant</p>
-                </div>
-                <div class="game-card">
-                    <p>Elden Ring</p>
-                </div>
-                <div class="game-card">
-                    <p>Forza Horizon</p>
-                </div>
-                <div class="game-card">
-                    <p>Marvel's Spider-Man: Miles Morales</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title reveal">
+                <span class="section-number">04.</span> Let's Connect
+            </h2>
+            <p class="contact-desc reveal">Feel free to reach out! I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
 
-    <footer>
-        <div class="footer-links">
-            <a href="https://www.instagram.com/ni_shant07_/" target="_blank">Instagram</a>
-            <a href="https://github.com/sammy70707" target="_blank">GitHub</a>
-            <a href="https://steamcommunity.com/profiles/76561199747123480/" target="_blank">Steam</a>
-            <a href="https://discord.gg/eUUgYKXm5g" target="_blank">Discord</a>
+            <a href="mailto:sammyofficial770@gmail.com" class="btn btn-primary btn-glow reveal" id="emailBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span>Send Email</span>
+            </a>
+
+            <div class="social-grid reveal">
+                <a href="https://www.instagram.com/ni_shant07_/" target="_blank" class="social-card" id="socialInstagram">
+                    <div class="social-icon" style="background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </div>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://github.com/sammy70707" target="_blank" class="social-card" id="socialGithub">
+                    <div class="social-icon" style="background: linear-gradient(135deg, #333, #6e5494)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0-.09-3.77S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </div>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://discord.gg/eUUgYKXm5g" target="_blank" class="social-card" id="socialDiscord">
+                    <div class="social-icon" style="background: linear-gradient(135deg, #5865F2, #7289da)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                    </div>
+                    <span>Discord</span>
+                </a>
+                <a href="https://steamcommunity.com/profiles/76561199747123480/" target="_blank" class="social-card" id="socialSteam">
+                    <div class="social-icon" style="background: linear-gradient(135deg, #1b2838, #2a475e)">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M11.979 0C5.678 0 .511 4.86.022 10.942l6.432 2.658a3.387 3.387 0 0 1 1.912-.587c.064 0 .126.003.189.006l2.861-4.142V8.81c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396a3.398 3.398 0 0 1-3.349-2.858L.453 15.16A11.985 11.985 0 0 0 11.979 24c6.627 0 12-5.373 12-12S18.605 0 11.979 0z"/></svg>
+                    </div>
+                    <span>Steam</span>
+                </a>
+            </div>
         </div>
-        <p><a href="https://discord.gg/eUUgYKXm5g" target="_blank" style="color: #00e5ff; text-decoration: underline;">Join my Discord server</a></p>
-        <p>This site is under Development</p>
-        <p>&copy; 2026 akat-suki.in. All rights reserved.</p>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ni_shant07_/" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://github.com/sammy70707" target="_blank" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0-.09-3.77S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </a>
+                    <a href="https://discord.gg/eUUgYKXm5g" target="_blank" aria-label="Discord">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                    </a>
+                </div>
+                <div class="footer-cta">
+                    <a href="https://discord.gg/eUUgYKXm5g" target="_blank" class="discord-banner">
+                        Join my Discord server →
+                    </a>
+                </div>
+                <p class="footer-copy">
+                    Built with <span class="heart">♥</span> by Nishant &bull; © 2026 akat-suki.in
+                </p>
+            </div>
+        </div>
     </footer>
 
-    
-    <script>
-        function openHobbyModal() {
-            const modal = document.getElementById('hobbyModal');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeHobbyModal() {
-            const modal = document.getElementById('hobbyModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-on-scroll');
-                } else {
-                    entry.target.classList.remove('animate-on-scroll');
-                }
-            });
-        }, observerOptions);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const elementsToObserve = document.querySelectorAll('.project-card, .section-title, .animate-scroll-left, .animate-scroll-right, .animate-scroll-up, .contact-content');
-            elementsToObserve.forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
-
+    <!-- Script -->
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
